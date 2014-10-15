@@ -1,2 +1,2 @@
 all:
-	g++ main.cpp node.cpp -o main
+	g++ main.cpp node.cpp hashentry.cpp hashmap.cpp -o main

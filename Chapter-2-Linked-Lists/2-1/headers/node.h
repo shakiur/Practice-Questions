@@ -6,9 +6,16 @@ class Node{
 	int data;
 
 public:
+	// Constructors
 	Node(int);
+	Node(int, Node*);
+
+	// Getters
 	int getData();
 	Node * getNext();
+
+	// Setters
+	void setNext(Node*);
 };
 
 #endif
