@@ -65,12 +65,14 @@ void removeDupe(Node*& head){
 		// If current node has count > 1, remove
 		if(count > 1){
 			prev->setNext(curr->getNext());
-			
-			curr = prev->getNext();
+			delete curr;
+			Node * curr = prev;
+
 		}
-		
-		curr = curr->getNext();
+
 		prev = curr;
+		curr = curr->getNext();
+		
 
 	}
 
