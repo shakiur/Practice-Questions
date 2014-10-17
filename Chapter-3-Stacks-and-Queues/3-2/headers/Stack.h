@@ -14,13 +14,26 @@ class Stack{
 			// New Node to place at stop of stack
 			Node * new_top = new Node(d);
 
-			// Sets new top next value to current top
+			// If old top has a min, then either update new top 
+			// with itself or use old_tops min node
+			if(top){
+				if(d < top->getMin()->getData())
+					new_top->setMin(new_top);
+				else
+					new_top->setMin(top->getMin());
+			}
+			else{
+				new_top->setMin(new_top);
+			}
+
+			// Places new_top on top of stack
 			new_top->setNext(top);
 
 			// Top of stack is now newest node
 			top = new_top;
 
 		}
+
 		Node * pop(){
 
 			// Holds old top which will be removed
@@ -32,6 +45,8 @@ class Stack{
 			// Returns top most Node
 			return old_top;
 		}
+
+		Node * min() { return top->getMin(); }
 
 };
 

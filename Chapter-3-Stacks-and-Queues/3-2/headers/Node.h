@@ -4,20 +4,23 @@
 class Node{
 	int data;
 	Node* next;
+	Node* min;
 
 	public:
 		// Constructors
-		Node() : next(NULL){}
-		Node(int d) : data(d), next(NULL) {}
-		Node(int d, Node* n) : data(d), next(NULL) {}
+		Node() : next(NULL), min(NULL) {}
+		Node(int d) : data(d), next(NULL), min(NULL) {}
+		Node(int d, Node* n) : data(d), next(NULL), min(NULL) {}
 
 		// Setters
 		void setData(int d) { data = d; }
 		void setNext(Node* n) { next = n; }
+		void setMin(Node* m) { min = m; }
 
 		// Getters
 		int getData() { return data; }
 		Node* getNext() { return next; }
+		Node* getMin() { return min; }
 
 		// Append to end
 		void appendToEnd(int d){
