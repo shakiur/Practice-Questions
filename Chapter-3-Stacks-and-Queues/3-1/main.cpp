@@ -9,5 +9,8 @@ Describe how you could use a single array to implement three stacks
 using namespace std;
 
 int main(){
+	Stack * s = new Stack;
+	s->push(0,1);
 
+	cout << s->pop(0) << endl;
 }
