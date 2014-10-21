@@ -36,7 +36,9 @@ int main(){
 
 	mq->enqueue(1);
 	mq->enqueue(2);
+	mq->enqueue(3);
 
+	cout << mq->dequeue()->getData() << endl;
 	cout << mq->dequeue()->getData() << endl;
 	cout << mq->dequeue()->getData() << endl;
 }

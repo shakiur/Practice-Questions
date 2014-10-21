@@ -40,15 +40,25 @@ class Stack{
 				return NULL;
 			else{
 				Node * itr = top;
+				Node * itr2 = top;
 
+				// Find last element
 				while(itr->getNext())
 					itr = itr->getNext();
 
-				Node * last = new Node(itr->getData());
+				cout << "Last Elem: " << itr->getData() << endl;
 
-				delete itr;
-				
-				return last;
+
+				// Remove last itr
+				while(itr2){
+
+					if(itr2->getNext() == itr)
+						itr2->setNext(NULL);
+					
+					itr2 = itr2->getNext();
+				}
+
+				return itr;
 			}
 		}
 
