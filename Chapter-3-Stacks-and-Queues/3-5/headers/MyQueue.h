@@ -20,16 +20,20 @@ class MyQueue{
 			if(front->isEmpty()){
 				Node * f = new Node(d);
 				front->push(f);
+			}else{
+				end->push(n);
 			}
-			
-			end->push(n);
 			
 		}
 
 		Node * dequeue(){
+			// Remove front of queue
 			Node * tmp = front->pop();
 
-			front->push(end->popLast());
+			// Take last elem from end list and push it
+			// to front stack
+			Node * last = end->popLast();
+			front->push(last);
 
 			return tmp;
 		}

@@ -22,7 +22,9 @@ class Stack{
 
 		void push(Node* n){
 			n->setNext(top);
+
 			top = n;
+
 		}
 
 		Node* pop(){
@@ -45,9 +47,6 @@ class Stack{
 				// Find last element
 				while(itr->getNext())
 					itr = itr->getNext();
-
-				cout << "Last Elem: " << itr->getData() << endl;
-
 
 				// Remove last itr
 				while(itr2){
