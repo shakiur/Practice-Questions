@@ -22,7 +22,9 @@ class Stack{
 
 		void push(Node* n){
 			n->setNext(top);
+
 			top = n;
+
 		}
 
 		Node* pop(){
@@ -32,6 +34,30 @@ class Stack{
 				Node * n = top;
 				top = top->getNext();
 				return n;
+			}
+		}
+
+		Node* popLast(){
+			if(!top)
+				return NULL;
+			else{
+				Node * itr = top;
+				Node * itr2 = top;
+
+				// Find last element
+				while(itr->getNext())
+					itr = itr->getNext();
+
+				// Remove last itr
+				while(itr2){
+
+					if(itr2->getNext() == itr)
+						itr2->setNext(NULL);
+					
+					itr2 = itr2->getNext();
+				}
+
+				return itr;
 			}
 		}
 

@@ -40,9 +40,9 @@ int main(){
 	mq->enqueue(4);
 	mq->enqueue(5);
 
-	cout << "Dequeue: " << mq->dequeue()->getData() << endl;
-	cout << "Dequeue: " << mq->dequeue()->getData() << endl;
-	cout << "Dequeue: " << mq->dequeue()->getData() << endl;
-	cout << "Dequeue: " << mq->dequeue()->getData() << endl;
-	cout << "Dequeue: " << mq->dequeue()->getData() << endl;
+	cout << "My Dqueue: " << mq->dequeue()->getData() << endl;
+	cout << "My Dqueue: " << mq->dequeue()->getData() << endl;
+	cout << "My Dqueue: " << mq->dequeue()->getData() << endl;
+	cout << "My Dqueue: " << mq->dequeue()->getData() << endl;
+	cout << "My Dqueue: " << mq->dequeue()->getData() << endl;
 }
