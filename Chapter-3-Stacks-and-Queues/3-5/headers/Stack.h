@@ -35,33 +35,6 @@ class Stack{
 			}
 		}
 
-		Node* popLast(){
-			if(!top)
-				return NULL;
-			else{
-				Node * itr = top;
-				Node * itr2 = top;
-
-				// Find last element
-				while(itr->getNext())
-					itr = itr->getNext();
-
-				cout << "Last Elem: " << itr->getData() << endl;
-
-
-				// Remove last itr
-				while(itr2){
-
-					if(itr2->getNext() == itr)
-						itr2->setNext(NULL);
-					
-					itr2 = itr2->getNext();
-				}
-
-				return itr;
-			}
-		}
-
 		bool isEmpty() {
 			return top == NULL;
 		}

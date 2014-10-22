@@ -7,31 +7,36 @@
 using namespace std;
 
 class MyQueue{
-	Stack * front;
-	Stack * end;
+	Stack * s1;
+	Stack * s2;
 
 	public:
 		// Constructors
-		MyQueue() : front(new Stack), end(new Stack) {}
+		MyQueue() : s1(new Stack), s2(new Stack) {}
 
 		void enqueue(int d){
 			Node * n = new Node(d);
 
-			if(front->isEmpty()){
-				Node * f = new Node(d);
-				front->push(f);
-			}
-			
-			end->push(n);
-			
+			Node * f = new Node(d);
+			s1->push(f);
+
 		}
 
 		Node * dequeue(){
-			Node * tmp = front->pop();
+			// Reverse order of s1 into s2 to get first
+			// node that was placed in s1
+			while(!s1->isEmpty()){
+				s2->push(s1->pop());
+			}
 
-			front->push(end->popLast());
+			Node * n = s2->pop();
+			
+			// Return elements to s1
+			while(!s2->isEmpty()){
+				s1->push(s2->pop());
+			}
 
-			return tmp;
+			return n;
 		}
 };
 
