@@ -36,7 +36,7 @@ class Node{
 				}
 				else if(d > itr->getData()){
 					if(itr->getRight()){
-						itr = itr->getLeft();
+						itr = itr->getRight();
 					}
 					else{
 						itr->setRight(n);

@@ -17,11 +17,16 @@ bool isBalanced(Node*);
 using namespace std;
 
 int main(){
+
 	Node * n = new Node(10);
 	n->push(5);
 	n->push(3);
+	n->push(2);
 	n->push(1);
+	n->push(7);
 	n->push(20);
+	n->push(15);
+	n->push(30);
 
 	//preOrder(n);
 
@@ -36,11 +41,9 @@ void preOrder(Node* itr){
 	cout << itr->getData() << endl;
 
 	if(itr->getLeft()){
-		cout << "Left: ";
 		preOrder(itr->getLeft());
 	}
 	if(itr->getRight()){
-		cout << "Right: ";
 		preOrder(itr->getRight());
 	}
 
