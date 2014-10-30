@@ -6,17 +6,28 @@ a tree with depth D, you'll have D linked lists)
 
 #include <iostream>
 #include <algorithm>
-#include "headers/BTNode.h"
+#include "headers/LLNode.h"
+
+BTNode* buildTree();
 
 int getHeight(BTNode*);
 
 void printBTNodeData(int, int, int);
 
-
+LLNode* createListFromTree(BTNode*);
 
 int main(){
 
 	// Build binary search tree
+	BTNode* r = buildTree();
+
+	LLNode ** table = new LLNode*[5];
+	table[0]->add(r);
+
+}
+
+BTNode* buildTree(){
+
 	BTNode* r = new BTNode(5);
 
 	r->add(2);
@@ -31,6 +42,7 @@ int main(){
 
 	std::cout << getHeight(r) << std::endl;
 
+	return r;
 }
 
 int getHeight(BTNode* root){
@@ -68,4 +80,11 @@ void printBTNodeData(int data, int l_height, int r_height){
 
 		std::cout << std::endl << std::endl;
 
+}
+
+LLNode* createListFromTree(BTNode* r){
+
+
+
+	return NULL;
 }
