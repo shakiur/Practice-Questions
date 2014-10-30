@@ -1,28 +1,28 @@
-#ifndef NODE_H
-#define NODE_H
+#ifndef BTNODE_H
+#define BTNODE_H
 
-class Node{
+class BTNode{
 	int data;
-	Node* left;
-	Node* right;
+	BTNode* left;
+	BTNode* right;
 
 	public:
 		// Constructors
-		Node(int d) : data(d), left(NULL), right(NULL) {}
+		BTNode(int d) : data(d), left(NULL), right(NULL) {}
 
 		// Setters
 		void setData(int d) { data = d; }
-		void setLeft(Node* l) { left = l; }
-		void setRight(Node* r) { right = r; }
+		void setLeft(BTNode* l) { left = l; }
+		void setRight(BTNode* r) { right = r; }
 
 		// Getters
 		int getData() { return data; }
-		Node* getLeft() { return left; }
-		Node* getRight() { return right; }
+		BTNode* getLeft() { return left; }
+		BTNode* getRight() { return right; }
 
 		void add(int d){
-			Node* temp = this;
-			Node* n = new Node(d);
+			BTNode* temp = this;
+			BTNode* n = new BTNode(d);
 
 			while(temp){
 				if(temp->getData() == d){

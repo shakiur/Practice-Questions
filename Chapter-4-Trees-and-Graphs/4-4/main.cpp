@@ -6,14 +6,18 @@ a tree with depth D, you'll have D linked lists)
 
 #include <iostream>
 #include <algorithm>
-#include "headers/Node.h"
+#include "headers/BTNode.h"
 
-int getHeight(Node*);
+int getHeight(BTNode*);
+
+void printBTNodeData(int, int, int);
+
+
 
 int main(){
 
 	// Build binary search tree
-	Node* r = new Node(5);
+	BTNode* r = new BTNode(5);
 
 	r->add(2);
 	r->add(1);
@@ -29,29 +33,39 @@ int main(){
 
 }
 
-int getHeight(Node* root){
+int getHeight(BTNode* root){
 
-	if(root){
+	if(root == NULL){
+		return 0;
+	}
+	else{
 
 		int l_height = getHeight(root->getLeft());
 		int r_height = getHeight(root->getRight());
 		
+		//printBTNodeData(root->getData(), l_height, r_height);
+
 		if(l_height > r_height){
-			std::cout << "L Data: " << root->getData() 
-				 << " | 1 + " << l_height << " = " << (1 + l_height)
-				 << std::endl;
 			return 1 + l_height;
 		}
 		else{
-			std::cout << "R Data: " << root->getData() 
-				 << " | 1 + " << r_height << " = " << (1 + r_height)
-				 << std::endl;
 			return 1 + r_height;
 		}
+		
 
 	}
-	else{
-		return 0;
-	}
+
+}
+
+void printBTNodeData(int data, int l_height, int r_height){
+
+		std::cout << "Data: " << data << std::endl
+				  << "L Height: " << l_height << std::endl
+				  << "R Height: " << r_height << std::endl;
+
+		std::cout << "1 + " << (l_height > r_height ? l_height : r_height);
+		std::cout << " = " << (l_height > r_height ? (1 + l_height) : (1 + r_height));
+
+		std::cout << std::endl << std::endl;
 
 }
