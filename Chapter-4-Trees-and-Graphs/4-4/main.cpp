@@ -8,21 +8,31 @@ a tree with depth D, you'll have D linked lists)
 #include <algorithm>
 #include "headers/LLNode.h"
 
+// Create sample Binary Search Tree to be used
 BTNode* buildTree();
 
+// Gets hieght of longes branch within BST
 int getHeight(BTNode*);
 
+// Prints data at each recursive point to help understand
 void printBTNodeData(int, int, int);
 
-LLNode* createListFromTree(BTNode*);
+// Place nodes from BST into array of linked lists
+LLNode** createListFromTree(BTNode*);
+
+// Takes node from BST and adds to proper linked list
+void placeNodesInList(BTNode*, LLNode**, int);
+
+// Display all nodes at each level
+void displayList(LLNode**);
 
 int main(){
 
-	// Build binary search tree
 	BTNode* r = buildTree();
 
-	LLNode ** table = new LLNode*[5];
-	table[0]->add(r);
+	LLNode ** table = createListFromTree(r);
+
+	displayList(table);
 
 }
 
@@ -39,8 +49,6 @@ BTNode* buildTree(){
 	r->add(8);
 
 	r->add(4);
-
-	std::cout << getHeight(r) << std::endl;
 
 	return r;
 }
@@ -82,9 +90,46 @@ void printBTNodeData(int data, int l_height, int r_height){
 
 }
 
-LLNode* createListFromTree(BTNode* r){
+void placeNodesInList(BTNode* b, LLNode** levels, int l){
 
+	if(b == NULL)
+		return;
+	else{
+		levels[l]->add(b);
+		placeNodesInList(b->getLeft(), levels, l+1);
+		placeNodesInList(b->getRight(), levels, l+1);
+	}
+}
 
+LLNode** createListFromTree(BTNode* r){
 
-	return NULL;
+	int num_levels = getHeight(r);
+	
+	LLNode** levels = new LLNode*[num_levels];
+
+	// Load each list with empty LLNode
+	for(int i = 0; i < num_levels; i++){
+		levels[i] = new LLNode;
+	}
+
+	placeNodesInList(r, levels, 0);
+
+	return levels;
+}
+
+void displayList(LLNode** levels){
+
+	for(int i = 0; i < 4; i++){
+		LLNode * temp = levels[i];
+
+		std::cout << "Level " << i << ": ";
+
+		while(temp){
+			std::cout << temp->getData()->getData() << "->";
+			temp = temp->getNext();
+		}
+
+		std::cout << "NULL\n";
+	}
+
 }

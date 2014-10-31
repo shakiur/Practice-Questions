@@ -21,20 +21,24 @@ class LLNode{
 		void setNext(LLNode* n) { next = n; }
 
 		void add(BTNode* b){
+
 			LLNode * n = new LLNode(b);
-			std::cout << "add\n";
 
+			// If LLNode is empty, add BTNode to current
+			if(data == NULL){
+				data = b;
+				return;
+			}
 
+			// Otherwise iterate until last LLNode is found
+			LLNode * temp = this;
 
-			LLNode* temp = this;
-
-/*
 			while(temp->getNext()){
 				temp = temp->getNext();
-
 			}
-*/
+
 			temp->setNext(n);
+
 		}
 
 };
