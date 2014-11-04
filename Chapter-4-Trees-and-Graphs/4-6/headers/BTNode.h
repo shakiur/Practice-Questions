@@ -14,12 +14,13 @@ class BTNode{
 		void setData(int d) { data = d; }
 		void setLeft(BTNode* l) { left = l; }
 		void setRight(BTNode* r) { right = r; }
+		void setParent(BTNode* p) { parent = p; }
 
 		// Getters
 		int getData() { return data; }
 		BTNode* getLeft() { return left; }
 		BTNode* getRight() { return right; }
-
+		BTNode* getParent() { return parent; }
 };
 
 #endif
