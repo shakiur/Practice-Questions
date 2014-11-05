@@ -24,8 +24,8 @@ class BTNode{
 			BTNode* n = new BTNode(d);
 			BTNode* temp = this;
 
-			while(this){
-				if(d = temp->getData()){
+			while(temp){
+				if(d == temp->getData()){
 					return;
 				}
 				else if(d < temp->getData()){

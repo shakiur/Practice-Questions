@@ -15,6 +15,13 @@ bool checkAllNodes(BTNode*, BTNode* );
 int main(){
 	BTNode* r1 = buildTree();
 	BTNode* r2 = buildSubTree();
+
+	
+	if(checkIfSubTree(r1, r2))
+		std::cout << "R2 is a subtree of R1" << std::endl;
+	else
+		std::cout << "NOT SUBTREE" << std::endl;
+		
 }
 
 BTNode* buildTree(){
@@ -53,5 +60,22 @@ bool checkIfSubTree(BTNode* r1, BTNode* r2){
 }
 
 bool checkAllNodes(BTNode* r1, BTNode* r2){
-	return true;
+
+	if(r2 == NULL){
+		// Both trees have reached end successfully
+		return true;
+	}
+	else if(r1->getData() == r2->getData()){
+
+		// Current nodes are equal, check both left & right nodes
+		// are equal as well
+		return checkAllNodes(r1->getLeft(), r2->getLeft())
+				&&
+			   checkAllNodes(r1->getRight(), r2->getRight());
+
+	}
+	else{
+		// Current 2 nodes are not equal, return false
+		return false;
+	}
 }
