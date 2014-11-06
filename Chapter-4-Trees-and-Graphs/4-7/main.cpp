@@ -61,17 +61,19 @@ bool checkIfSubTree(BTNode* r1, BTNode* r2){
 
 bool checkAllNodes(BTNode* r1, BTNode* r2){
 
-	if(r2 == NULL){
+	if(r1== NULL && r2 == NULL){
 		// Both trees have reached end successfully
 		return true;
 	}
-	else if(r1->getData() == r2->getData()){
-
+	else if(r1 && r2){
+		// Makes sure both R1 and R2 contain data
+		if(r1->getData() == r2->getData()){
 		// Current nodes are equal, check both left & right nodes
 		// are equal as well
-		return checkAllNodes(r1->getLeft(), r2->getLeft())
-				&&
-			   checkAllNodes(r1->getRight(), r2->getRight());
+			return checkAllNodes(r1->getLeft(), r2->getLeft())
+					&&
+			   	   checkAllNodes(r1->getRight(), r2->getRight());
+		}
 
 	}
 	else{
