@@ -11,16 +11,13 @@ classes and data structures for this problem. Implement a method getCallHandler(
 #include <vector>
 #include <string>
 
-#include "headers/PhoneCall.h"
-#include "headers/Fresher.h"
-#include "headers/TechLead.h"
-#include "headers/ProductManager.h"
+#include "headers/CallHandler.h"
+
 
 int main(){
-	PhoneCall* p1 = new PhoneCall("7188460559");
-	Fresher* f1 = new Fresher("Jack", 0);
-	TechLead* t1 = new TechLead("Stephen", 1);
-	ProductManager* pm1 = new ProductManager("Mary", 1);
+
+	CallHandler * ch = new CallHandler;
+	ch->getCallHandler();
 
 
 }
