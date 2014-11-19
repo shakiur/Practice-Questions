@@ -14,8 +14,8 @@ class ChessPiece{
 		int player;
 
 	public:
-		ChessPiece(std::string n, char a, int x, int y) : 
-			name(n), abbr(a), x_pos(x), y_pos(y), alive(true) {}
+		ChessPiece(std::string n, char a, int x, int y, int p) : 
+			name(n), abbr(a), x_pos(x), y_pos(y), player(p), alive(true) {}
 
 		// Getters
 		std::string getName() { return name; }
@@ -24,6 +24,7 @@ class ChessPiece{
 		int get_y_pos() { return y_pos; }
 		bool isAlive() { return alive; }
 		bool validMove(int x, int y);
+		int getPlayer() { return player; }
 
 		// Setters
 		void setPos(int x, int y){
@@ -36,8 +37,8 @@ class ChessPiece{
 class Pawn : public ChessPiece{
 
 	public:
-		Pawn(int x, int y) : 
-			ChessPiece("Pawn", 'P', x, y) {}
+		Pawn(int x, int y, int p) : 
+			ChessPiece("Pawn", 'P', x, y, p) {}
 
 		bool validMove(int x, int y){
 			// Checks if piece moves 1 spot forward or 1 spot diagonal
@@ -50,8 +51,8 @@ class Pawn : public ChessPiece{
 class King : public ChessPiece{
 
 	public: 
-		King(int x, int y) :
-			ChessPiece("King", 'K', x, y) {}
+		King(int x, int y, int p) :
+			ChessPiece("King", 'K', x, y, p) {}
 
 		bool validMove(int x, int y){
 			// Checks if piece moved 1 position
@@ -70,8 +71,8 @@ class King : public ChessPiece{
 class Queen : public ChessPiece{
 
 	public:
-		Queen(int x, int y) : 
-			ChessPiece("Queen", 'Q', x, y) {}
+		Queen(int x, int y, int p) : 
+			ChessPiece("Queen", 'Q', x, y, p) {}
 
 		bool validMove(int x, int y){
 			// Checks if diagonal move was made
@@ -92,8 +93,8 @@ class Queen : public ChessPiece{
 class Bishop : public ChessPiece{
 
 	public:
-		Bishop(int x, int y) : 
-			ChessPiece("Bishop", 'B', x, y) {}
+		Bishop(int x, int y, int p) : 
+			ChessPiece("Bishop", 'B', x, y, p) {}
 
 		bool validMove(int x, int y){
 			// Checks if new position is diagonal
@@ -104,8 +105,8 @@ class Bishop : public ChessPiece{
 
 class Rook : public ChessPiece{
 	public:
-		Rook(int x, int y) : 
-			ChessPiece("Rook", 'R', x, y) {}
+		Rook(int x, int y, int p) : 
+			ChessPiece("Rook", 'R', x, y, p) {}
 
 		bool validMove(int x, int y){
 			// Checks if new position is vertical or horizontal
@@ -120,8 +121,8 @@ class Rook : public ChessPiece{
 class Knight : public ChessPiece{
 
 	public:
-		Knight(int x, int y) :
-			ChessPiece("Knight", 'N', x, y) {}
+		Knight(int x, int y, int p) :
+			ChessPiece("Knight", 'N', x, y, p) {}
 
 		bool validMove(int x, int y){
 			// Checks if new position is L in any direction

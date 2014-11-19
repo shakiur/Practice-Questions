@@ -9,7 +9,14 @@ void getNames(std::string&, std::string&);
 
 int main(){
 
-	GameHandler* gh = new GameHandler;
+	//GameHandler* gh = new GameHandler;
+	//gh->play();
+
+	ChessPiece* p = new Pawn(0,0, 1);
+	if(p->validMove(1,1))
+		std::cout << "Valid move\n";
+	else
+		std::cout << "Invalid Move\n";
 
 }
 

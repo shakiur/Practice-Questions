@@ -1,8 +1,8 @@
 #ifndef GAMEHANDLER_H
 #define GAMEHANDLER_H
 
-#include "ChessBoard.h"
 #include "ChessPiece.h"
+#include "ChessBoard.h"
 #include "Player.h"
 
 class GameHandler{
@@ -14,12 +14,18 @@ class GameHandler{
         GameHandler(){
             board = new ChessBoard;
 
-            player1 = new Player("Jack", 1, board);
-            player2 = new Player("Jill", 2, board);
+            player1 = new Player("Player1", 1, board);
+            player2 = new Player("Player2", 2, board);
 
             board->displayBoard();
         }
         
+        void play(){
+            while(player1->isAlive() && player2->isAlive()){
+                player1->play();
+                // player2->play();
+            }
+        }
 };
 
 

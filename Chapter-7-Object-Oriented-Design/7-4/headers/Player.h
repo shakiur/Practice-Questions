@@ -45,39 +45,128 @@ class Player{
 				// Pawns
 				pawns = new Pawn*[8];
 				for(int i = 0; i < 8; i++){
-					pawns[i] = new Pawn(i, y_pos_pawn);
-					board->setBoard(i, y_pos_pawn, pawns[i]->getAbbr());
+					pawns[i] = new Pawn(i, y_pos_pawn, type);
+					board->setBoard(i, y_pos_pawn, pawns[i]);
 				}
 
 				// King
-				k = new King(x_king_pos, y_pos_other);
-				board->setBoard(x_king_pos, y_pos_other, k->getAbbr());
+				k = new King(x_king_pos, y_pos_other, type);
+				board->setBoard(x_king_pos, y_pos_other, k);
 
 				// Queen
-				q = new Queen(x_queen_pos, y_pos_other);
-				board->setBoard(x_queen_pos, y_pos_other, q->getAbbr());
+				q = new Queen(x_queen_pos, y_pos_other, type);
+				board->setBoard(x_queen_pos, y_pos_other, q);
 
 				// Rooks
 				rooks = new Rook*[2];
 				for(int i = 0; i < 2; i++){
-					rooks[i] = new Rook(i*7, y_pos_other);
-					board->setBoard(i*7, y_pos_other, rooks[i]->getAbbr());
+					rooks[i] = new Rook(i*7, y_pos_other, type);
+					board->setBoard(i*7, y_pos_other, rooks[i]);
 				}
 
 				// Knights
 				knights = new Knight*[2];
 				for(int i = 0; i < 2; i++){
-					knights[i] = new Knight((i * 5) + 1, y_pos_other);
-					board->setBoard((i*5) + 1, y_pos_other, knights[i]->getAbbr());
+					knights[i] = new Knight((i * 5) + 1, y_pos_other, type);
+					board->setBoard((i*5) + 1, y_pos_other, knights[i]);
 				}
 
 				// Bishops
 				bishops = new Bishop*[2];
 				for(int i = 0; i < 2; i++){
-					bishops[i] = new Bishop((i*3) + 2, y_pos_other);
-					board->setBoard((i*3) + 2, y_pos_other, bishops[i]->getAbbr());
+					bishops[i] = new Bishop((i*3) + 2, y_pos_other, type);
+					board->setBoard((i*3) + 2, y_pos_other, bishops[i]);
 				}
 			
+		}
+
+		// Getters
+		std::string getName() { return name; }
+
+		bool isAlive(){return k->isAlive(); }
+
+		void play(){
+			bool valid_piece = false;
+
+			int x_orig;
+			int y_orig;
+
+			int x_dest;
+			int y_dest;
+
+			// Get valid origin piece
+			do{
+				
+				std::cout << std::endl;
+				std::cout << name << " please enter piece to move:\n";
+				std::cout << "X: ";
+				std::cin >> x_orig;
+
+				std::cout << "Y: ";
+				std::cin >> y_orig;
+
+				// Checks if values entered is within scope
+				if(x_orig < 0 || y_orig < 0 || x_orig > 7 || y_orig > 7){
+					std::cout << "Invalid Chess Piece!\n";
+				}
+				else{
+					// Checks if space is blank
+					if(board->checkPieceEmpty(x_orig, y_orig))
+						std::cout << "Empty Space Selected!\n";
+					// Checks if origin piece belongs to player
+					else if(board->matchPlayerPiece(x_orig, y_orig, type))
+						valid_piece = true;
+					else
+						std::cout << "Other Player Chess Piece!\n";
+				}
+			}
+			while(!valid_piece);
+
+			// Get valid destination
+			do{
+				std::cout << std::endl;
+				std::cout << "Origin Piece " 
+						  << board->getPiece(x_orig, y_orig)->getAbbr()
+						  << board->getPiece(x_orig, y_orig)->getPlayer()
+						  << " X|Y:  " 
+						  << x_orig << "|" << y_orig << "\n";
+
+				std::cout << name << " please enter destination:\n";
+				std::cout << "X: ";
+				std::cin >> x_dest;
+
+				std::cout << "Y: ";
+				std::cin >> y_dest;
+
+				// Checks if values entered is within scope
+				if(x_dest < 0 || y_dest < 0 || x_dest > 7 || y_dest > 7){
+					std::cout << "Invalid Chess Piece!\n";
+					valid_piece = false;
+				}
+				else{
+					if(board->matchPlayerPiece(x_dest, y_dest, type)){
+						std::cout << "Cannot Replace Your Own Piece\n";
+						valid_piece = false;
+					}
+					//else if(!board->getPiece(x_orig, y_orig)->validMove(x_dest, y_dest)){
+					//	std::cout << "Piece Cannot Move That Way!\n";
+					//	valid_piece = false;
+					//}
+					else{
+						if(board->checkPieceEmpty(x_dest, y_dest)){
+							valid_piece = true;
+							// Move piece to new destination
+						}
+						else{
+							valid_piece = true;
+							// Repalce other players liece
+						}
+					}
+				}
+			}
+			while(!valid_piece);
+
+
 		}
 
 };
