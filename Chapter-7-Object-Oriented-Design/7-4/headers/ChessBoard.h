@@ -22,13 +22,17 @@ class ChessBoard{
 		}
 
 		void displayBoard(){
-			for(int i = 0; i < x; i++){
-				for(int j = 0; j < y; j++){
+			for(int i = 0; i < y; i++){
+				for(int j = 0; j < x; j++){
 					std::cout << " " << board[i][j];
 				}
 				std::cout << std::endl;
 
 			}
+		}
+
+		void setBoard(int x, int y, char c){
+			board[y][x] = c;
 		}
 };
 
