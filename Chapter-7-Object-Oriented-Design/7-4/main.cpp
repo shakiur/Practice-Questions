@@ -3,8 +3,7 @@ Design a chess game using object oriented principles
 */
 
 #include <iostream>
-#include "headers/ChessBoard.h"
-#include "headers/ChessPiece.h"
+#include "headers/GameHandler.h"
 
 int main(){
 	ChessBoard * cb = new ChessBoard;
