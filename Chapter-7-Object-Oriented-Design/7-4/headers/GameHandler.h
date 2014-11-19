@@ -13,12 +13,13 @@ class GameHandler{
     public:
         GameHandler(){
             board = new ChessBoard;
-            
+
             player1 = new Player("Jack", 1, board);
             player2 = new Player("Jill", 2, board);
 
             board->displayBoard();
         }
+        
 };
 
 
