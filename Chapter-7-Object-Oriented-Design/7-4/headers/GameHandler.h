@@ -23,7 +23,10 @@ class GameHandler{
         void play(){
             while(player1->isAlive() && player2->isAlive()){
                 player1->play();
-                // player2->play();
+                board->displayBoard();
+
+                player2->play();
+                board->displayBoard();
             }
         }
 };

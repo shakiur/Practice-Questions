@@ -143,24 +143,42 @@ class Player{
 					std::cout << "Invalid Chess Piece!\n";
 					valid_piece = false;
 				}
-				else{
-					if(board->matchPlayerPiece(x_dest, y_dest, type)){
-						std::cout << "Cannot Replace Your Own Piece\n";
+				else if(board->checkPieceEmpty(x_dest, y_dest)){
+
+					// Check if move is valid
+					if(!board->getPiece(x_orig, y_orig)->validMove(x_dest, y_dest)){
+						std::cout << "Piece Cannot Move That Way!\n";
 						valid_piece = false;
 					}
-					//else if(!board->getPiece(x_orig, y_orig)->validMove(x_dest, y_dest)){
-					//	std::cout << "Piece Cannot Move That Way!\n";
-					//	valid_piece = false;
-					//}
 					else{
-						if(board->checkPieceEmpty(x_dest, y_dest)){
-							valid_piece = true;
-							// Move piece to new destination
-						}
-						else{
-							valid_piece = true;
-							// Repalce other players liece
-						}
+						// Move piece to new destination
+						board->setBoard(x_dest, y_dest, board->getPiece(x_orig, y_orig));
+						
+						// Set old position to NULL
+						board->setBoard(x_orig, y_orig, NULL);
+						valid_piece = true;
+						
+					}
+				}
+				else{
+					if(board->matchPlayerPiece(x_dest, y_dest, type)){
+						std::cout << "Cannot Replace Your Own Piece!\n";
+						valid_piece = false;
+					}
+					else if(!board->getPiece(x_orig, y_orig)->validMove(x_dest, y_dest)){
+						std::cout << "Piece Cannot Move That Way!\n";
+						valid_piece = false;
+					}
+					else{
+						valid_piece = true;
+						board->getPiece(x_dest, y_dest)->setAlive(false);
+
+						// Move piece to new destination
+						board->setBoard(x_dest, y_dest, board->getPiece(x_orig, y_orig));
+						
+						// Set old position to NULL
+						board->setBoard(x_orig, y_orig, NULL);
+						
 					}
 				}
 			}

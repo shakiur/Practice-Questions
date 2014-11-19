@@ -23,7 +23,7 @@ class ChessPiece{
 		int get_x_pos() { return x_pos; }
 		int get_y_pos() { return y_pos; }
 		bool isAlive() { return alive; }
-		bool validMove(int x, int y);
+		virtual bool validMove(int x, int y) {return true;}
 		int getPlayer() { return player; }
 
 		// Setters
@@ -31,6 +31,7 @@ class ChessPiece{
 			x_pos = x;
 			y_pos = y;
 		}
+		void setAlive(bool b) { alive = b; }
 
 };
 
@@ -42,7 +43,7 @@ class Pawn : public ChessPiece{
 
 		bool validMove(int x, int y){
 			// Checks if piece moves 1 spot forward or 1 spot diagonal
-			return (	(y == (y_pos + 1)) 
+			return (	std::abs(y_pos - y) == 1
 							&& 
 						((x == x_pos) || x == (x_pos + 1)));
 		}
