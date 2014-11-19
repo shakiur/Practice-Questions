@@ -11,6 +11,8 @@ class ChessPiece{
 		int y_pos;
 		bool alive;
 
+		int player;
+
 	public:
 		ChessPiece(std::string n, char a, int x, int y) : 
 			name(n), abbr(a), x_pos(x), y_pos(y), alive(true) {}
