@@ -154,6 +154,9 @@ class Player{
 						// Move piece to new destination
 						board->setBoard(x_dest, y_dest, board->getPiece(x_orig, y_orig));
 						
+						// Update current pieces coordinates
+						board->getPiece(x_dest, y_dest)->setPos(x_dest, y_dest);
+
 						// Set old position to NULL
 						board->setBoard(x_orig, y_orig, NULL);
 						valid_piece = true;
@@ -175,6 +178,9 @@ class Player{
 
 						// Move piece to new destination
 						board->setBoard(x_dest, y_dest, board->getPiece(x_orig, y_orig));
+						
+						// Update current pieces coordinates
+						board->getPiece(x_dest, y_dest)->setPos(x_dest, y_dest);
 						
 						// Set old position to NULL
 						board->setBoard(x_orig, y_orig, NULL);

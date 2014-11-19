@@ -22,12 +22,19 @@ class GameHandler{
         
         void play(){
             while(player1->isAlive() && player2->isAlive()){
+
                 player1->play();
                 board->displayBoard();
 
                 player2->play();
                 board->displayBoard();
+                
             }
+
+            if(player1->isAlive())
+                std::cout << player1->getName() << " Is The Winner!\n";
+            else
+                std::cout << player2->getName() << " Is The Winner!\n";
         }
 };
 
