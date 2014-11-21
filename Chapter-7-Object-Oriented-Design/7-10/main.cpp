@@ -6,12 +6,22 @@ bage collector in C++.
 #include "Headers/Person.h"
 #include "Headers/SP.h"
 
+void testFunc();
+
 int main(){
-	Person* p1 = new Person("Jack1", 25);
 
 	SP<Person> p2(new Person("Jack2", 25));
+	p2->display();
 
-	SP<Person> p(new Person("Scott", 25));
-    
+	{
+		SP<Person> q;
+		q = p2;
+		q->display();
+
+		// Normally q will be deleted, but it has a counter
+		// So it won't delete the "person" before the counter is 0
+	}
+
+	p2->display();
 
 }

@@ -9,7 +9,7 @@ class Person{
 		Person() : name("TBD"), age(0) {}
 		~Person() { std::cout << name << " deleted\n"; }
 		Person(std::string n, int a) : name(n), age(a) {}
-		void Display() { std::cout << name << std::endl;}
+		void display() { std::cout << name << std::endl;}
 
 };
 
