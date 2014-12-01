@@ -28,6 +28,8 @@ void findAllSubsets(std::vector<int>& set, std::vector< std::vector<int> >& all_
 
     if(pos < set.size()){
         if(pos == 0){
+
+            // Add empty vector, and first int vector to all_subsets
             std::vector<int>* empty = new std::vector<int>;
             std::vector<int>* first_set = new std::vector<int>;
 
@@ -40,24 +42,30 @@ void findAllSubsets(std::vector<int>& set, std::vector< std::vector<int> >& all_
 
         }
         else{
-            for(int i = 0; i < all_subsets.size(); i++){
-                std::vector<int>* new_set = new std::vector<int>;
+
+            // Keep track of original # of sets so we don't add vectors forever
+            int init_size = all_subsets.size();
+
+            for(int i = 0; i < init_size; i++){
+
+                // Create new vector add end of all_subsets
+                all_subsets.push_back(*(new std::vector<int>));
 
                 for(int j = 0; j < all_subsets[i].size(); j++){
-                    new_set->push_back(all_subsets[i][j]);
+
+                    // Add all ints from current vector set
+                    all_subsets.back().push_back(all_subsets[i][j]);
+
                 }
 
-                new_set->push_back(set[pos]);
+                // Add newest int to current vector set
+                all_subsets.back().push_back(set[pos]);
 
-                for(int k = 0; k < new_set->size(); k++){
-                    std::cout << (*new_set)[k] << " ";
-                }
-                std::cout << std::endl;
-                //all_subsets.push_back(*new_set);
+
             }
             
-
-            //findAllSubsets(set, all_subsets, ++pos);
+            // Move on to next int
+            findAllSubsets(set, all_subsets, ++pos);
             
         }
     }
