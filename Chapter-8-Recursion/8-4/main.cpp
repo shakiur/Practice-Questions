@@ -5,10 +5,10 @@ Write a method to compute all permutations of a string
 
 void computePerm(std::string);
 
-void calcPerm(std::string, std::string, bool*, int);
+void calcPerm(std::string, std::string, bool*);
 
 int main(){
-	computePerm("abcd");
+	computePerm("abc");
 }
 
 void computePerm(std::string orig){
@@ -20,7 +20,7 @@ void computePerm(std::string orig){
 		hold_char[i] = false;
 	}
 
-	calcPerm(orig, temp, hold_char, 0);
+	calcPerm(orig, temp, hold_char);
 }
 
 void calcPerm(std::string orig, std::string temp, bool* hold_char){
@@ -28,6 +28,22 @@ void calcPerm(std::string orig, std::string temp, bool* hold_char){
 		std::cout << temp << std::endl;
 	}
 	else{
-		
+		for(int i = 0; i < orig.size(); i++){
+
+			if(hold_char[i] == false){
+				hold_char[i] = true;
+				
+				// Add non-visited letter to temp word
+				temp += orig[i];
+
+				calcPerm(orig, temp, hold_char);
+
+				temp = temp.substr(0, temp.size()-1);
+				hold_char[i] = false;
+
+
+			}
+
+		}
 	}
 }
