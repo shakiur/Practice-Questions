@@ -9,7 +9,7 @@ output: ()()(), ()(()), (())(), ((()))
 
 void printCombos(int);
 
-void findValidCombo(std::string, int, int);
+void findValidCombo(std::string, int, int, int);
 
 int main(){
 	printCombos(3);
@@ -20,15 +20,27 @@ void printCombos(int n){
 	int right_p(n);
 	std::string temp;
 
-	findValidCombo(temp, left_p, right_p);
+	findValidCombo(temp, left_p, right_p, n);
 
 }
 
-void findValidCombo(std::string temp, int left_p, int right_p){
-	if(temp.size() == (left_p + right_p)){
-		std::cout << temp;
+void findValidCombo(std::string temp, int left_p, int right_p, int n){
+	if(temp.size() == (n*2)){
+		std::cout << temp << std::endl;
 	}
 	else {
+		// Add left parenthesis
+		if(left_p > 0){
+			temp += "(";
+			left_p--;
+			findValidCombo(temp, left_p, right_p, n);
+		}
 
+		// Add right parenthesis
+		if(right_p > 0){
+			temp += ")";
+			right_p--;
+			findValidCombo(temp, left_p, right_p, n);
+		}
 	}
 }
