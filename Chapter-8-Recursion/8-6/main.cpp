@@ -20,6 +20,7 @@ int main(){
 	colorIn(4, 5, image, '-', size);
 
 	displayImage(image, size);
+	
 }
 
 char** createImage(int size){
