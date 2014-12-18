@@ -5,16 +5,19 @@ other.
 #include <iostream>
 
 void mergeSortWord(std::string&, int, int);
-
 void mergeWord(std::string&, int, int, int, int);
+
+void mergeSortList(std::string*, int, int);
+void mergeList(std::string*, int, int, int, int);
 
 int main(){
 
 	std::string arr[5] = {"abc", "def", "ghi", "cab", "hig"};
 
-	std::string word = "cabhvnm";
+	std::string word = "qwekdfmcxzv";
 
 	mergeSortWord(word, 0, word.size()-1);
+
 
 }
 
