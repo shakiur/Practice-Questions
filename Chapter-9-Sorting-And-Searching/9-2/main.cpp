@@ -19,14 +19,14 @@ void display_arr(std::string*, int);
 int main(){
 
 	int size = 5;
-	std::string arr[5] = {"abc", "def", "ghi", "cab", "hig"};
+	std::string arr[5] = {"def", "abc", "ghi", "cab", "hig"};
+
+	std::string word = "qwekdfmcxzv";
+	mergeSortWord(word, 0, word.size()-1);
+	std::cout << word << std::endl;
 
 	mergeSortList(arr, 0, size - 1);
 	display_arr(arr, size);
-
-	//std::string word = "qwekdfmcxzv";
-	//mergeSortWord(word, 0, word.size()-1);
-
 
 }
 
@@ -41,6 +41,15 @@ void mergeSortList(std::string* list, int beg, int end){
 }
 
 void mergeList(std::string* list, int beg1, int end1, int beg2, int end2){
+
+	/*
+	// Debug
+	std::cout << "list[" << beg1 << "]: " << list[beg1] << std::endl;
+	std::cout << "list[" << end1 << "]: " << list[end1] << std::endl;
+	std::cout << "list[" << beg2 << "]: " << list[beg2] << std::endl;
+	std::cout << "list[" << end2 << "]: " << list[end2] << std::endl;
+	*/
+
 	std::string * new_list = new std::string[(end2 - beg1) + 1];
 
 	int pos = 0;
@@ -63,6 +72,7 @@ void mergeList(std::string* list, int beg1, int end1, int beg2, int end2){
 			}
 			else{
 				new_list[pos] = list[beg2];
+				beg2++;
 			}
 		}
 		else if(beg1 > end1 && beg2 <= end2){
@@ -82,7 +92,7 @@ void mergeList(std::string* list, int beg1, int end1, int beg2, int end2){
 	for(int i = 0; i < size; i++, init_beg1++){
 		list[init_beg1] = new_list[i];
 	}
-
+	
 }
 
 
