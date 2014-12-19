@@ -4,9 +4,11 @@ other.
 */
 #include <iostream>
 
+// Sorts a word by letter
 void mergeSortWord(std::string&, int, int);
 void mergeWord(std::string&, int, int, int, int);
 
+// Sorts an array of strings alphabetically w/ anagrams next to each other
 void mergeSortList(std::string*, int, int);
 void mergeList(std::string*, int, int, int, int);
 
