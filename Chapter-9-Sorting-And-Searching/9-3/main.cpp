@@ -10,12 +10,25 @@ Output: 8 (the index of 5 in the array)
 
 int binarySearch(int*, int, int, int);
 
+int rotateBinarySearch(int*, int, int, int);
+
 int main(){
 
 	int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+	int arr2[12] = {15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14};
 
-	std::cout << binarySearch(arr, 0, 9, 10) << std::endl;
+	std::cout << rotateBinarySearch(arr, 0, 12, 5) << std::endl;
 
+}
+
+int rotateBinarySearch(int* arr, int beg, int end, int val){
+	while(end > beg){
+		int mid = (beg + end)/2;
+
+		std::cout << mid << std::endl;
+
+		return 0;
+	}
 }
 
 int binarySearch(int* arr, int beg, int end, int val){
@@ -26,7 +39,7 @@ int binarySearch(int* arr, int beg, int end, int val){
 			return mid;
 		}
 		else if(val < arr[mid]){
-			end = mid;
+			end = mid - 1;
 		}
 		else{
 			beg = mid + 1;
