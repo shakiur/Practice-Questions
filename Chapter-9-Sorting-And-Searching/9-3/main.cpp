@@ -17,23 +17,53 @@ int main(){
 	int arr[9] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
 	int arr2[12] = {15, 16, 19, 20, 25, 1, 3, 4, 5, 7, 10, 14};
 
-	std::cout << rotateBinarySearch(arr, 0, 12, 5) << std::endl;
+	/*
+	for(int i = 1; i < 10; i++){
+		std::cout << "Val " << i << ": " << binarySearch(arr, 0, 9, i) << std::endl;
+	}
+	*/
 
+	//std::cout << binarySearch(arr, 0, 9, 4) << std::endl;
+
+	for(int i = 1; i < 13; i++){
+		std::cout << "Val " << i << ": " << rotateBinarySearch(arr2, 0, 13, i) << std::endl;
+	}
+	
+	//rotateBinarySearch(arr2, 0, 12, 5);
 }
 
 int rotateBinarySearch(int* arr, int beg, int end, int val){
-	while(end > beg){
+	while(end >= beg){
 		int mid = (beg + end)/2;
 
-		std::cout << mid << std::endl;
+		//std::cout << "arr[" << mid << "]: " << arr[mid] << std::endl;
 
-		return 0;
+		if(arr[mid] == val){
+			//std::cout << "Return " << mid << std::endl;
+			return mid;
+		}
+		else if(val < arr[mid]){
+			end = mid - 1;
+		}
+		else{
+			beg = mid + 1;
+		}
+		
 	}
+	return -1;
 }
 
 int binarySearch(int* arr, int beg, int end, int val){
-	while(end > beg){
+	while(end >= beg){
 		int mid = (beg + end)/2;
+
+		/*
+		std::cout << "Val: " << val << std::endl;
+		std::cout << "Arr[" << mid << "]: " << arr[mid] << std::endl;
+		std::cout << "Beg: " << beg << std::endl;
+		std::cout << "Mid: " << mid << std::endl;
+		std::cout << "End: " << end << std::endl << std::endl;
+		*/
 
 		if(arr[mid] == val){
 			return mid;
