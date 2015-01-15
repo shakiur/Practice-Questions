@@ -31,7 +31,7 @@ int main(){
 	}
 	
 	
-	//std::cout << rotateBinarySearch(arr2, 0, 11, 3) << std::endl;
+	//rotateBinarySearch(arr2, 0, 11, 14);
 }
 
 int rotateBinarySearch(int* arr, int beg, int end, int val){
@@ -51,7 +51,7 @@ int rotateBinarySearch(int* arr, int beg, int end, int val){
 		}
 		else if(arr[beg] > arr[end]){
 			// Rotating portion found, figure out what to do
-			if(arr[mid] < arr[end])
+			if(val <= arr[end])
 				beg = mid + 1;
 			else
 				end = mid - 1;
