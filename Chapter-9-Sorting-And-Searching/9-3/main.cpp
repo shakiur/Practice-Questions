@@ -25,25 +25,25 @@ int main(){
 
 	//std::cout << binarySearch(arr, 0, 8, 4) << std::endl;
 
-	/*
+	
 	for(int i = 0; i < 12; i++){
 		std::cout << "Val " << arr2[i] << ": " << rotateBinarySearch(arr2, 0, 11, arr2[i]) << std::endl;
 	}
-	*/
 	
-	rotateBinarySearch(arr2, 0, 11, 3);
+	
+	//std::cout << rotateBinarySearch(arr2, 0, 11, 3) << std::endl;
 }
 
 int rotateBinarySearch(int* arr, int beg, int end, int val){
 	while(end >= beg){
 		int mid = (beg + end)/2;
 
-		
+		/*
 		std::cout << "Val: " << val << std::endl;
 		std::cout << "Beg[" << beg << "]: " << arr[beg] << std::endl;
 		std::cout << "Mid[" << mid << "]: " << arr[mid] <<std::endl;
 		std::cout << "End[" << end << "]: " << arr[end] <<std::endl << std::endl;
-		
+		*/
 
 		if(arr[mid] == val){
 			//std::cout << "Return " << mid << std::endl;
@@ -51,9 +51,10 @@ int rotateBinarySearch(int* arr, int beg, int end, int val){
 		}
 		else if(arr[beg] > arr[end]){
 			// Rotating portion found, figure out what to do
-			if(arr[mid] < arr[beg]){
+			if(arr[mid] < arr[end])
+				beg = mid + 1;
+			else
 				end = mid - 1;
-			}
 		}
 		else if(val < arr[mid]){
 			end = mid - 1;
