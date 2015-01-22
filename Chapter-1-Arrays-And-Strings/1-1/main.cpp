@@ -12,18 +12,13 @@ bool allUnique(string);
 bool allUniqueNoAddlStruct(string);
 
 int main() {
-
+	
 }
 
 bool allUnique(string s){
 
-	int * char_count = new int[ASCII_SIZE];
+	int * char_count[ASCII_SIZE] = {0};
 	int len = s.length();
-
-	// Set char_count array to 0
-	for(int i = 0; i < ASCII_SIZE; i++){
-		char_count[i] = 0;
-	}
 
 	for(int i = 0; i < len; i++){
 		char_count[int(s[i])]++;
