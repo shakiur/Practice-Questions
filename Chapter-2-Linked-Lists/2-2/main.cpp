@@ -17,7 +17,12 @@ void display(Node*);
 Node * findNthToLast(Node*, int);
 
 int main(){
+	Node * head = buildList();
+	display(head);
 
+	std::cout << findNthToLast(head, 0)->getData() << std::endl;
+	std::cout << findNthToLast(head, 4)->getData() << std::endl;
+	std::cout << findNthToLast(head, 8)->getData() << std::endl;
 }
 
 Node * buildList() {
