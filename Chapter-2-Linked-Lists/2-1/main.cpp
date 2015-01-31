@@ -66,6 +66,7 @@ void removeDupe(Node*& head){
 		if(count > 1){
 
 			prev->setNext(curr->getNext());
+			delete curr;
 			curr = prev;
 
 		}
