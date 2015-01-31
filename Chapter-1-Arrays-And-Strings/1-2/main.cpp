@@ -8,7 +8,11 @@ using namespace std;
 void reverseChar(char[], int);
 
 int main(){
-
+	char x[] = "Hell";
+	
+	std::cout << x << std::endl;
+	reverseChar(x, 4);
+	std::cout << x << std::endl;
 }
 
 void reverseChar(char c[], int length){
