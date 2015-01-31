@@ -11,7 +11,7 @@ using namespace std;
 char ** createArray(int, int);
 
 // Add letters to 2D array to create "image"
-void addLetters(char**&);
+void addLetters(char**);
 
 // Display the 2D array
 void displayArr(char**, int, int);
@@ -58,7 +58,7 @@ char ** createArray(int h, int w){
 	return arr;
 }
 
-void addLetters(char**& arr){
+void addLetters(char** arr){
 	arr[1][0] = 'A';
 	arr[1][3] = 'B';
 	arr[2][0] = 'C';
