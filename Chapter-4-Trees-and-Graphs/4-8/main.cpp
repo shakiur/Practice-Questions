@@ -10,7 +10,9 @@ BTNode* buildTree();
 
 void printPathsToVal(BTNode*, int);
 
-void lookForPaths(Stack*, BTNode*, int, int);
+void findPaths(BTNode*, Stack*, int, int);
+
+void calcPaths(BTNode*, Stack*, int, int&);
 
 int main(){
 	BTNode* root = buildTree();
@@ -31,18 +33,42 @@ BTNode* buildTree(){
 }
 
 void printPathsToVal(BTNode* root, int val){
-	if(root){
-		printPathsToVal(root->getLeft(), val);
 
-		// Stack holds paths starting from current root
-		Stack* s = new Stack(root);
-		lookForPaths(s, root, val, 0);
+	Stack* s = new Stack(root);
+	findPaths(root, s, val, 0);
 
-		printPathsToVal(root->getRight(), val);
-		
+}
+
+void findPaths(BTNode* root, Stack* s, int val, int total){ 
+	if(root){ 
+
+		calcPaths(root, s, val, total);
+
+		if(root->getLeft())
+			findPaths(root->getLeft(), s, val, total);
+
+		if(root->getRight())
+			findPaths(root->getRight(), s, val, total);
 	}
 }
 
-void lookForPaths(Stack* s, BTNode* root, int val, int total){
-	
+void calcPaths(BTNode* root, Stack* s, int val, int& total){
+
+	total += root->getData();
+	s->push(root);
+
+	if(total == val){	
+		// Print current stack
+		// Delete last entry in stack
+	}
+	else if(total < val){	
+		// Return from here
+	}
+	else{ 
+		// new total is higher than value
+
+	}
+
+	// Pop up top of stack
+	// Subtrack from total so you can start over
 }
