@@ -8,15 +8,13 @@ to print all paths which sum up to that value. Note that it can be any path in t
 
 BTNode* buildTree();
 
-void printPathsToVal(BTNode*, int);
-
-void findPaths(BTNode*, Stack*, int);
+void findPaths(BTNode*, int);
 
 void calcPaths(BTNode*, Stack*, int, int);
 
 int main(){
 	BTNode* root = buildTree();
-	printPathsToVal(root, 5);
+	findPaths(root, 5);
 }
 
 BTNode* buildTree(){
@@ -32,14 +30,7 @@ BTNode* buildTree(){
 	return root;
 }
 
-void printPathsToVal(BTNode* root, int val){
-
-	Stack* s = new Stack(root);
-	findPaths(root, s, val);
-
-}
-
-void findPaths(BTNode* root, Stack* s, int val){ 
+void findPaths(BTNode* root, int val){ 
 	if(root){ 
 
 		Stack* s = new Stack;
@@ -47,12 +38,12 @@ void findPaths(BTNode* root, Stack* s, int val){
 
 		calcPaths(root, s, val, total);
 
-/*		if(root->getLeft())
-			findPaths(root->getLeft(), s, val);
+		if(root->getLeft())
+			findPaths(root->getLeft(), val);
 
 		if(root->getRight())
-			findPaths(root->getRight(), s, val);
-*/
+			findPaths(root->getRight(), val);
+
 	}
 }
 
@@ -67,8 +58,11 @@ void calcPaths(BTNode* root, Stack* s, int val, int total){
 	}
 	else if(total < val){	
 		// Check left and right path
-		calcPaths(root->getLeft(), s, val, total);
-		calcPaths(root->getRight(), s, val, total);
+		if(root->getLeft())
+			calcPaths(root->getLeft(), s, val, total);
+		
+		if(root->getRight())
+			calcPaths(root->getRight(), s, val, total);
 	}
 	else{
 		// new total is higher than value
