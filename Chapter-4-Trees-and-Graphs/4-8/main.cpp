@@ -42,17 +42,17 @@ void printPathsToVal(BTNode* root, int val){
 void findPaths(BTNode* root, Stack* s, int val){ 
 	if(root){ 
 
-		Stack* s = new Stack(root);
+		Stack* s = new Stack;
 		int total = 0;
 
 		calcPaths(root, s, val, total);
 
-		if(root->getLeft())
+/*		if(root->getLeft())
 			findPaths(root->getLeft(), s, val);
 
 		if(root->getRight())
 			findPaths(root->getRight(), s, val);
-
+*/
 	}
 }
 

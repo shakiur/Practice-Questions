@@ -5,12 +5,19 @@ class Stack{
 	LLNode* top;
 
 	public:
+		Stack() : top(NULL){}
 		Stack(BTNode* t) : top(new LLNode(t)){}
 
 		void push(BTNode* b){
 			LLNode* n = new LLNode(b);
-			n->setNext(top);
-			top = n;
+
+			if(top){
+				n->setNext(top);
+				top = n;
+			}
+			else{
+				top = n;
+			}
 		}
 
 		LLNode* pop(){
