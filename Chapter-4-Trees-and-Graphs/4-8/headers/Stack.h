@@ -34,7 +34,7 @@ class Stack{
 				temp = temp->getNext();
 			}
 
-			std::cout << std::endl;
+			std::cout << "NULL" << std::endl;
 
 		}
 };
