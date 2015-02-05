@@ -8,7 +8,16 @@ number of 1 bits in their binary representation.
 int findNextSameBits(int, bool);
 
 int main(){
-    
+    int test_num = 18;
+    bool large_or_small = false;
+
+    if(large_or_small)
+        std::cout << "Next largest ";
+    else
+        std::cout << "Next smallest ";
+
+    std::cout << "value of int " << test_num << " is: " 
+             << findNextSameBits(test_num, large_or_small) << std::endl;
 }
 
 int findNextSameBits(int orig, bool large_or_small){
