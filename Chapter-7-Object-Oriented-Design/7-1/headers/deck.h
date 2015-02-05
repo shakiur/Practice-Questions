@@ -7,8 +7,8 @@ class Deck{
 	Card ** all_cards;
 
 	public:
-		Deck(int num = 52) {
-			all_cards = new Card*[num];
+		Deck() {
+			all_cards = new Card*[52];
 
 			// Add cards for each suit
 			for(int i = 0; i < 4; i++){
