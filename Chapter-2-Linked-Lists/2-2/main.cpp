@@ -7,6 +7,8 @@ Implement an algorithm to find the nth to last element of a singly linked list.
 
 using namespace std;
 
+const string display_text = "th to last element is ";
+
 // Builds list to test with
 Node * buildList();
 
@@ -20,9 +22,9 @@ int main(){
 	Node * head = buildList();
 	display(head);
 
-	std::cout << findNthToLast(head, 0)->getData() << std::endl;
-	std::cout << findNthToLast(head, 4)->getData() << std::endl;
-	std::cout << findNthToLast(head, 8)->getData() << std::endl;
+	std::cout << 0 << display_text << findNthToLast(head, 0)->getData() << std::endl;
+	std::cout << 4 << display_text << findNthToLast(head, 4)->getData() << std::endl;
+	std::cout << 8 << display_text << findNthToLast(head, 8)->getData() << std::endl;
 }
 
 Node * buildList() {
