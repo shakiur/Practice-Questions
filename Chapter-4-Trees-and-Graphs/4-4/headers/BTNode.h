@@ -26,6 +26,7 @@ class BTNode{
 
 			while(temp){
 				if(temp->getData() == d){
+					delete n;
 					return;
 				}
 				else if(d < temp->getData()){
