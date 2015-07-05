@@ -31,16 +31,31 @@ int main(){
 
 void sortStack(Stack*& s1){
 	Stack* s2 = new Stack;
+	int itr = 0;
 
 	while(!s1->isEmpty()){
+
+	//	cout << "Iteration: " << itr << endl;
+	//	cout << "S1 STACK:\n";
+
+	//	s1->display();
+
 		// Holds top from s1
 		Node * tmp = s1->pop();
+
+	//	cout << "Tmp: " << tmp->getData() << endl;
 
 		// Pops elements back to s1 is greater
 		while(!s2->isEmpty() && tmp->getData() > s2->peek()->getData()){
 			s1->push(s2->pop());
 		}
 		s2->push(tmp);
+
+	//	cout << "S2 STACK:\n";
+	//	s2->display();
+	//	cout << endl;
+
+	//	itr++;
 
 	}
 	s1 = s2;
