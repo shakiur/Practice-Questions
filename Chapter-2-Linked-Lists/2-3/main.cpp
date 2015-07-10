@@ -54,4 +54,6 @@ void removeNode(Node<T>*& curr){
 		curr->setNext(next->getNext());
 	}
 
+	delete next;
+
 }
